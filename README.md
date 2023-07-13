@@ -1,2 +1,11 @@
 # JSON Editor
 Just having fun with Windows Forms.
+
+## Todo
+- finish implementing the ToString() method for objects and arrays
+- work out the logic for mapping a JSON document onto the TreeView
+- when adding a node to the treeview, store the JSONElement object in the "tag" property
+- create a "new element" dialog window
+- call things elements instead of nodes
+- menubar or toolbar with load and save buttons
+- contextmenustrips and key combos (e.g., ctrl+s for save) and all that jazz
