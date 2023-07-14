@@ -32,6 +32,7 @@ namespace JSON_Editor
             this.documentTrv = new System.Windows.Forms.TreeView();
             this.addNodeBtn = new System.Windows.Forms.Button();
             this.deleteNodeBtn = new System.Windows.Forms.Button();
+            this.newValueTypeCbo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // documentTrv
@@ -44,7 +45,7 @@ namespace JSON_Editor
             // 
             // addNodeBtn
             // 
-            this.addNodeBtn.Location = new System.Drawing.Point(440, 13);
+            this.addNodeBtn.Location = new System.Drawing.Point(440, 63);
             this.addNodeBtn.Name = "addNodeBtn";
             this.addNodeBtn.Size = new System.Drawing.Size(208, 52);
             this.addNodeBtn.TabIndex = 1;
@@ -54,7 +55,7 @@ namespace JSON_Editor
             // 
             // deleteNodeBtn
             // 
-            this.deleteNodeBtn.Location = new System.Drawing.Point(440, 71);
+            this.deleteNodeBtn.Location = new System.Drawing.Point(440, 121);
             this.deleteNodeBtn.Name = "deleteNodeBtn";
             this.deleteNodeBtn.Size = new System.Drawing.Size(208, 52);
             this.deleteNodeBtn.TabIndex = 2;
@@ -62,11 +63,24 @@ namespace JSON_Editor
             this.deleteNodeBtn.UseVisualStyleBackColor = true;
             this.deleteNodeBtn.Click += new System.EventHandler(this.deleteNodeBtn_Click);
             // 
+            // newValueTypeCbo
+            // 
+            this.newValueTypeCbo.FormattingEnabled = true;
+            this.newValueTypeCbo.Items.AddRange(new object[] {
+            "Primitive",
+            "Object",
+            "Array"});
+            this.newValueTypeCbo.Location = new System.Drawing.Point(440, 12);
+            this.newValueTypeCbo.Name = "newValueTypeCbo";
+            this.newValueTypeCbo.Size = new System.Drawing.Size(208, 45);
+            this.newValueTypeCbo.TabIndex = 3;
+            // 
             // mainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.newValueTypeCbo);
             this.Controls.Add(this.deleteNodeBtn);
             this.Controls.Add(this.addNodeBtn);
             this.Controls.Add(this.documentTrv);
@@ -81,6 +95,7 @@ namespace JSON_Editor
         private System.Windows.Forms.TreeView documentTrv;
         private System.Windows.Forms.Button addNodeBtn;
         private System.Windows.Forms.Button deleteNodeBtn;
+        private System.Windows.Forms.ComboBox newValueTypeCbo;
     }
 }
 

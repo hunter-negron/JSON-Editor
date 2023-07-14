@@ -12,3 +12,5 @@ Just having fun with Windows Forms.
 - menubar or toolbar with load and save buttons
 - contextmenustrips and key combos (e.g., ctrl+s for save) and all that jazz
 - figure out how to reorder elemnts
+- separate primitives into their own classes?
+- add debugging thing that prints out the current JSON document

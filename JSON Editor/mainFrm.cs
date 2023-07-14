@@ -12,6 +12,8 @@ namespace JSON_Editor
 {
     public partial class mainFrm : Form
     {
+        JSONObject document = new JSONObject();
+
         public mainFrm()
         {
             InitializeComponent();
@@ -19,13 +21,42 @@ namespace JSON_Editor
 
         private void addNodeBtn_Click(object sender, EventArgs e)
         {
-            if(documentTrv.SelectedNode is null)
+            if (documentTrv.SelectedNode is not null && documentTrv.SelectedNode.Tag is JSONPrimitive) return;
+            if (newValueTypeCbo.SelectedIndex == -1) return;
+
+            JSONValue parent = documentTrv.SelectedNode is null ? document : (JSONValue) documentTrv.SelectedNode.Tag;
+            TreeNodeCollection nodes = documentTrv.SelectedNode is null ? documentTrv.Nodes : documentTrv.SelectedNode.Nodes;
+
+            bool needKey = parent is JSONObject;
+
+            if (newValueTypeCbo.SelectedIndex == 0)
             {
-                documentTrv.Nodes.Add("this is a node!");
+                // new primitive
+                NewJSONPrimitiveFrm newPrim = new NewJSONPrimitiveFrm(needKey);
+                if(newPrim.ShowDialog() == DialogResult.OK)
+                {
+                    if(needKey)
+                    {
+                        ((JSONObject)parent).Data.Add(newPrim.Key, newPrim.Result);
+
+                        TreeNode node = new TreeNode(newPrim.Key);
+                        node.Tag = newPrim.Result;
+                        nodes.Add(node);
+                    }
+                    else
+                    {
+                        ((JSONArray) parent).Data.Add(newPrim.Result);
+                    }
+                }
+
             }
-            else
+            else if(newValueTypeCbo.SelectedIndex == 1)
             {
-                documentTrv.SelectedNode.Nodes.Add("another one");
+                // new object
+            }
+            else if (newValueTypeCbo.SelectedIndex == 2)
+            {
+                // new array
             }
         }
 

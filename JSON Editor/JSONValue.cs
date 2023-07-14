@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JSON_Editor
 {
-    abstract class JSONValue
+    public abstract class JSONValue
     {
         // For writing out to a JSON file
         public abstract override string ToString();
@@ -15,15 +15,24 @@ namespace JSON_Editor
         public abstract string Display();
     }
 
-    class JSONPrimitive : JSONValue
+    public class JSONPrimitive : JSONValue
     {
         // Meant only for strings, numbers, booleans, and null
-        // TODO: separate these out into their own classes someday?
         public object Data { get; set; }
 
-        public JSONPrimitive(object s)
+        public enum PrimitiveType
         {
-            Data = s;
+            String,
+            Number,
+            Boolean,
+            Null
+        }
+
+        public PrimitiveType Type { get; set; }
+
+        public JSONPrimitive()
+        {
+            Data = null;
         }
 
         public override string ToString()
@@ -44,7 +53,7 @@ namespace JSON_Editor
         }
     }
 
-    class JSONObject : JSONValue
+    public class JSONObject : JSONValue
     {
         public Dictionary<string, JSONValue> Data { get; set; }
 
@@ -64,7 +73,7 @@ namespace JSON_Editor
         }
     }
     
-    class JSONArray : JSONValue
+    public class JSONArray : JSONValue
     {
         public List<JSONValue> Data { get; set; }
 
